@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\Materiale;
-use App\Models\Servicio;
+use App\Models\Salida;
 use Illuminate\Http\Request;
 
 /**
- * Class ServicioController
+ * Class SalidaController
  * @package App\Http\Controllers
  */
-class ServicioController extends Controller
+class SalidaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +20,9 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        $servicios = Servicio::with(['materiales'])->get();
+        $salidas = Salida::with(['empleado', 'materiales'])->get();
 
-        return view('servicio.index', compact('servicios'));
+        return view('salida.index', compact('salidas'));
     }
 
     /**
@@ -31,9 +32,10 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        $servicio = new Servicio();
+        $salida = new Salida();
+        $empleados = Empleado::pluck('nombre', 'id');
         $materiales = Materiale::pluck('nombre', 'id');
-        return view('servicio.create', compact('servicio', 'materiales'));
+        return view('salida.create', compact('salida', 'materiales', 'empleados'));
     }
 
     /**
@@ -44,13 +46,13 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Servicio::$rules);
+        request()->validate(Salida::$rules);
 
-        $servicio = Servicio::create($request->all());
-        $servicio->materiales()->sync($request->input('materiales', []));
+        $salida = Salida::create($request->all());
+        $salida->materiales()->sync($request->input('materiales', []));
 
-        return redirect()->route('servicios.index')
-            ->with('success', 'Servicio created successfully.');
+        return redirect()->route('salidas.index')
+            ->with('success', 'Salida created successfully.');
     }
 
     /**
@@ -61,9 +63,9 @@ class ServicioController extends Controller
      */
     public function show($id)
     {
-        $servicio = Servicio::find($id);
+        $salida = Salida::find($id);
 
-        return view('servicio.show', compact('servicio'));
+        return view('salida.show', compact('salida'));
     }
 
     /**
@@ -74,26 +76,26 @@ class ServicioController extends Controller
      */
     public function edit($id)
     {
-        $servicio = Servicio::find($id);
+        $salida = Salida::find($id);
 
-        return view('servicio.edit', compact('servicio'));
+        return view('salida.edit', compact('salida'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Servicio $servicio
+     * @param  Salida $salida
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Servicio $servicio)
+    public function update(Request $request, Salida $salida)
     {
-        request()->validate(Servicio::$rules);
+        request()->validate(Salida::$rules);
 
-        $servicio->update($request->all());
+        $salida->update($request->all());
 
-        return redirect()->route('servicios.index')
-            ->with('success', 'Servicio updated successfully');
+        return redirect()->route('salidas.index')
+            ->with('success', 'Salida updated successfully');
     }
 
     /**
@@ -103,9 +105,9 @@ class ServicioController extends Controller
      */
     public function destroy($id)
     {
-        $servicio = Servicio::find($id)->delete();
+        $salida = Salida::find($id)->delete();
 
-        return redirect()->route('servicios.index')
-            ->with('success', 'Servicio deleted successfully');
+        return redirect()->route('salidas.index')
+            ->with('success', 'Salida deleted successfully');
     }
 }

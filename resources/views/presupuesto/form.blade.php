@@ -8,8 +8,8 @@
         </div>
         <div class="form-group">
             {{ Form::label('servicios') }}
-            {{ Form::select('servicios[]', $servicios, null, ['class' => 'form-control select2' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'multiple required']) }}
-            {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::select('servicios[]', $servicios, null, ['class' => 'form-control select2' . ($errors->has('servicios') ? ' is-invalid' : ''), 'multiple required']) }}
+            {!! $errors->first('servicios', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('total') }}

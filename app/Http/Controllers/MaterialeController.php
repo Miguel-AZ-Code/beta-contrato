@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materiale;
-use App\Models\Servicio;
+use App\Models\Medida;
 use Illuminate\Http\Request;
 
 /**
- * Class ServicioController
+ * Class MaterialeController
  * @package App\Http\Controllers
  */
-class ServicioController extends Controller
+class MaterialeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +19,9 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        $servicios = Servicio::with(['materiales'])->get();
+        $materiales = Materiale::with(['medida'])->get();
 
-        return view('servicio.index', compact('servicios'));
+        return view('materiale.index', compact('materiales'));
     }
 
     /**
@@ -31,9 +31,9 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        $servicio = new Servicio();
-        $materiales = Materiale::pluck('nombre', 'id');
-        return view('servicio.create', compact('servicio', 'materiales'));
+        $materiale = new Materiale();
+        $medidas = Medida::pluck('unidad', 'id');
+        return view('materiale.create', compact('materiale', 'medidas'));
     }
 
     /**
@@ -44,13 +44,12 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Servicio::$rules);
+        request()->validate(Materiale::$rules);
 
-        $servicio = Servicio::create($request->all());
-        $servicio->materiales()->sync($request->input('materiales', []));
+        $materiale = Materiale::create($request->all());
 
-        return redirect()->route('servicios.index')
-            ->with('success', 'Servicio created successfully.');
+        return redirect()->route('materiales.index')
+            ->with('success', 'Materiale created successfully.');
     }
 
     /**
@@ -61,9 +60,9 @@ class ServicioController extends Controller
      */
     public function show($id)
     {
-        $servicio = Servicio::find($id);
+        $materiale = Materiale::find($id);
 
-        return view('servicio.show', compact('servicio'));
+        return view('materiale.show', compact('materiale'));
     }
 
     /**
@@ -74,26 +73,26 @@ class ServicioController extends Controller
      */
     public function edit($id)
     {
-        $servicio = Servicio::find($id);
+        $materiale = Materiale::find($id);
 
-        return view('servicio.edit', compact('servicio'));
+        return view('materiale.edit', compact('materiale'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Servicio $servicio
+     * @param  Materiale $materiale
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Servicio $servicio)
+    public function update(Request $request, Materiale $materiale)
     {
-        request()->validate(Servicio::$rules);
+        request()->validate(Materiale::$rules);
 
-        $servicio->update($request->all());
+        $materiale->update($request->all());
 
-        return redirect()->route('servicios.index')
-            ->with('success', 'Servicio updated successfully');
+        return redirect()->route('materiales.index')
+            ->with('success', 'Materiale updated successfully');
     }
 
     /**
@@ -103,9 +102,9 @@ class ServicioController extends Controller
      */
     public function destroy($id)
     {
-        $servicio = Servicio::find($id)->delete();
+        $materiale = Materiale::find($id)->delete();
 
-        return redirect()->route('servicios.index')
-            ->with('success', 'Servicio deleted successfully');
+        return redirect()->route('materiales.index')
+            ->with('success', 'Materiale deleted successfully');
     }
 }

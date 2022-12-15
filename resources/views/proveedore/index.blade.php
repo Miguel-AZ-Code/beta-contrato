@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Servicio
+    Proveedore
 @endsection
 
 @section('content')
@@ -13,15 +13,14 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Servicio') }}
+                                {{ __('Proveedore') }}
                             </span>
 
-                            <div class="float-right">
-                                <a href="{{ route('servicios.create') }}" class="btn btn-success btn-sm float-right"
-                                    data-placement="left">
-                                    {{ __('Create New') }}
+                             <div class="float-right">
+                                <a href="{{ route('proveedores.create') }}" class="btn btn-success btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
-                            </div>
+                              </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -32,46 +31,32 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="servicios" class="table table-striped dt-responsive nowrap">
+                            <table id="proveedores" class="table table-striped dt-responsive nowrap">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
 
-                                        <th>Nombre</th>
-                                        <th>Materiales</th>
-                                        <th>Descripcion</th>
-                                        <th>Costo</th>
+										<th>Nit</th>
+										<th>Empresa</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($servicios as $servicio)
+                                    @foreach ($proveedores as $proveedore)
                                         <tr>
-                                            <td>{{ $servicio->id }}</td>
+                                            <td>{{ ++$i }}</td>
 
-                                            <td>{{ $servicio->nombre }}</td>
-                                            <td>
-                                                @foreach ($servicio->materiales as $item)
-                                                    {{ $item->nombre }}<br>
-                                                @endforeach
-                                            </td>
-                                            <td>{{ $servicio->descripcion }}</td>
-                                            <td>{{ $servicio->costo }}</td>
+											<td>{{ $proveedore->nit }}</td>
+											<td>{{ $proveedore->empresa }}</td>
 
                                             <td>
-                                                <form action="{{ route('servicios.destroy', $servicio->id) }}"
-                                                    method="POST">
-                                                    <a class="btn btn-sm btn-dark "
-                                                        href="{{ route('servicios.show', $servicio->id) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-warning"
-                                                        href="{{ route('servicios.edit', $servicio->id) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-dark " href="{{ route('proveedores.show',$proveedore->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-warning" href="{{ route('proveedores.edit',$proveedore->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -81,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+                {!! $proveedores->links() !!}
             </div>
         </div>
     </div>
@@ -98,7 +84,7 @@
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
     <script>
-        $('#servicios').DataTable({
+        $('#proveedores').DataTable({
             responsive: true,
             autoWidth: false
         });

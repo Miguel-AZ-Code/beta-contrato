@@ -51,8 +51,8 @@
 
                                             <td>{{ $presupuesto->descripcion }}</td>
                                             <td>
-                                                @foreach ($presupuesto->servicios as $servicio)
-                                                    {{ $servicio->nombre }}<br>
+                                                @foreach ($presupuesto->servicios as $item)
+                                                    {{ $item->nombre }}<br>
                                                 @endforeach
                                             </td>
                                             <td>{{ $presupuesto->total }}</td>

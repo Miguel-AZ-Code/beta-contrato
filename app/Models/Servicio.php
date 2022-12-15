@@ -46,4 +46,12 @@ class Servicio extends Model
   {
     return $this->belongsToMany(Presupuesto::class);
   }
+
+  /**
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function materiales()
+  {
+    return $this->belongsToMany(Materiale::class);
+  }
 }

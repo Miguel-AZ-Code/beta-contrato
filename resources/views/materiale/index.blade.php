@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Servicio
+    Materiale
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Servicio') }}
+                                {{ __('Materiale') }}
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('servicios.create') }}" class="btn btn-success btn-sm float-right"
+                                <a href="{{ route('materiales.create') }}" class="btn btn-success btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
@@ -32,41 +32,39 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="servicios" class="table table-striped dt-responsive nowrap">
+                            <table id="materiales" class="table table-striped dt-responsive nowrap">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
 
                                         <th>Nombre</th>
-                                        <th>Materiales</th>
                                         <th>Descripcion</th>
                                         <th>Costo</th>
+                                        <th>Stock</th>
+                                        <th>Medida</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($servicios as $servicio)
+                                    @foreach ($materiales as $materiale)
                                         <tr>
-                                            <td>{{ $servicio->id }}</td>
+                                            <td>{{ $materiale->id }}</td>
 
-                                            <td>{{ $servicio->nombre }}</td>
-                                            <td>
-                                                @foreach ($servicio->materiales as $item)
-                                                    {{ $item->nombre }}<br>
-                                                @endforeach
-                                            </td>
-                                            <td>{{ $servicio->descripcion }}</td>
-                                            <td>{{ $servicio->costo }}</td>
+                                            <td>{{ $materiale->nombre }}</td>
+                                            <td>{{ $materiale->descripcion }}</td>
+                                            <td>{{ $materiale->costo }}</td>
+                                            <td>{{ $materiale->stock }}</td>
+                                            <td>{{ $materiale->medida->unidad }}</td>
 
                                             <td>
-                                                <form action="{{ route('servicios.destroy', $servicio->id) }}"
+                                                <form action="{{ route('materiales.destroy', $materiale->id) }}"
                                                     method="POST">
                                                     <a class="btn btn-sm btn-dark "
-                                                        href="{{ route('servicios.show', $servicio->id) }}"><i
+                                                        href="{{ route('materiales.show', $materiale->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-warning"
-                                                        href="{{ route('servicios.edit', $servicio->id) }}"><i
+                                                        href="{{ route('materiales.edit', $materiale->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
@@ -98,7 +96,7 @@
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
     <script>
-        $('#servicios').DataTable({
+        $('#materiales').DataTable({
             responsive: true,
             autoWidth: false
         });

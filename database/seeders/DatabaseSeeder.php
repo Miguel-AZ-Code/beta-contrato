@@ -22,12 +22,18 @@ class DatabaseSeeder extends Seeder
         \App\Models\Empleado::factory(15)->create();
         \App\Models\Proyecto::factory(15)->create();
         $this->call([
-            MetodoSeeder::class
+            MetodoSeeder::class,
+            MedidaSeeder::class,
         ]);
         \App\Models\Factura::factory(15)->create();
         \App\Models\Contrato::factory(15)->create();
         \App\Models\PresupuestoServicio::factory(60)->create();
         \App\Models\Documento::factory(15)->create();
+        \App\Models\Proveedore::factory(15)->create();
+        \App\Models\Materiale::factory(15)->create();
+        \App\Models\ServicioMaterial::factory(15)->create();
+        \App\Models\Entrada::factory(15)->create();
+        \App\Models\Salida::factory(15)->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

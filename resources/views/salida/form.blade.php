@@ -2,9 +2,9 @@
     <div class="box-body">
 
         <div class="form-group">
-            {{ Form::label('nombre') }}
-            {{ Form::text('nombre', $servicio->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
-            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('empleado_id') }}
+            {{ Form::select('empleado_id', $empleados, $salida->empleado_id, ['class' => 'form-control' . ($errors->has('empleado_id') ? ' is-invalid' : '')]) }}
+            {!! $errors->first('empleado_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('materiales') }}
@@ -13,13 +13,13 @@
         </div>
         <div class="form-group">
             {{ Form::label('descripcion') }}
-            {{ Form::text('descripcion', $servicio->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
+            {{ Form::text('descripcion', $salida->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
             {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('costo') }}
-            {{ Form::text('costo', $servicio->costo, ['class' => 'form-control' . ($errors->has('costo') ? ' is-invalid' : ''), 'placeholder' => 'Costo']) }}
-            {!! $errors->first('costo', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('fecha') }}
+            {{ Form::date('fecha', $salida->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
+            {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
     </div>

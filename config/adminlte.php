@@ -428,6 +428,26 @@ return [
             'route'  => 'documentos.index',
             'icon' => 'fas fa-fw fa-book',
         ],
+        [
+            'text' => 'Proveedores',
+            'route'  => 'proveedores.index',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Materiales',
+            'route'  => 'materiales.index',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Entradas',
+            'route'  => 'entradas.index',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        [
+            'text' => 'Salidas',
+            'route'  => 'salidas.index',
+            'icon' => 'fas fa-fw fa-book',
+        ],
     ],
 
     /*

@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('template_title')
-    Servicio
+    Salida
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Servicio') }}
+                                {{ __('Salida') }}
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('servicios.create') }}" class="btn btn-success btn-sm float-right"
+                                <a href="{{ route('salidas.create') }}" class="btn btn-success btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
@@ -32,41 +32,40 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="servicios" class="table table-striped dt-responsive nowrap">
+                            <table id="salidas" class="table table-striped dt-responsive nowrap">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
 
-                                        <th>Nombre</th>
+                                        <th>Empleado</th>
                                         <th>Materiales</th>
                                         <th>Descripcion</th>
-                                        <th>Costo</th>
+                                        <th>Fecha</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($servicios as $servicio)
+                                    @foreach ($salidas as $salida)
                                         <tr>
-                                            <td>{{ $servicio->id }}</td>
+                                            <td>{{ $salida->id }}</td>
 
-                                            <td>{{ $servicio->nombre }}</td>
+                                            <td>{{ $salida->empleado->nombre }}</td>
                                             <td>
-                                                @foreach ($servicio->materiales as $item)
+                                                @foreach ($salida->materiales as $item)
                                                     {{ $item->nombre }}<br>
                                                 @endforeach
                                             </td>
-                                            <td>{{ $servicio->descripcion }}</td>
-                                            <td>{{ $servicio->costo }}</td>
+                                            <td>{{ $salida->descripcion }}</td>
+                                            <td>{{ $salida->fecha }}</td>
 
                                             <td>
-                                                <form action="{{ route('servicios.destroy', $servicio->id) }}"
-                                                    method="POST">
+                                                <form action="{{ route('salidas.destroy', $salida->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-dark "
-                                                        href="{{ route('servicios.show', $servicio->id) }}"><i
+                                                        href="{{ route('salidas.show', $salida->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-warning"
-                                                        href="{{ route('servicios.edit', $servicio->id) }}"><i
+                                                        href="{{ route('salidas.edit', $salida->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
@@ -98,7 +97,7 @@
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
     <script>
-        $('#servicios').DataTable({
+        $('#salidas').DataTable({
             responsive: true,
             autoWidth: false
         });
