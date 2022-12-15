@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'INSUCONS',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>INSU</b>CONS',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -131,7 +131,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header_class' => 'bg-warning',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -167,12 +167,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'card-outline card-warning',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => 'btn-flat btn-warning',
 
     /*
     |--------------------------------------------------------------------------
@@ -383,70 +383,105 @@ return [
         //     'icon_color' => 'cyan',
         //     'url'        => '#',
         // ],
+        // ['header' => 'MODULO ADMINISTRACION Y SEGURIDAD'],
         [
-            'text' => 'Empleados',
-            'route'  => 'empleados.index',
+            'text' => 'Administracion',
             'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+
+            ],
         ],
         [
-            'text' => 'Clientes',
-            'route'  => 'clientes.index',
+            'text' => 'Personal',
             'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Empleados',
+                    'route'  => 'empleados.index',
+                    'icon' => 'fas fa-fw fa-users',
+                ],
+                [
+                    'text' => 'Clientes',
+                    'route'  => 'clientes.index',
+                    'icon' => 'fas fa-fw fa-users',
+                ],
+                [
+                    'text' => 'Proveedores',
+                    'route'  => 'proveedores.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+            ],
         ],
+        // ['header' => 'MODULO ENTRADAS Y SALIDAS'],
         [
-            'text' => 'Presupuestos',
-            'route'  => 'presupuestos.index',
-            'icon' => 'fas fa-fw fa-layer-group',
+            'text' => 'Entradas y Salidas',
+            'icon' => 'fas fa-fw fa-dolly',
+            'submenu' => [
+                [
+                    'text' => 'Facturas',
+                    'route'  => 'facturas.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+                [
+                    'text' => 'Entradas',
+                    'route'  => 'entradas.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+                [
+                    'text' => 'Salidas',
+                    'route'  => 'salidas.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+            ],
         ],
+        // ['header' => 'MODULO PRODUCTOS Y SERVICIOS'],
         [
-            'text' => 'Servicios',
-            'route'  => 'servicios.index',
-            'icon' => 'fas fa-fw fa-layer-group',
+            'text' => 'PRODUCTOS Y SERVICIOS',
+            'icon' => 'fas fa-fw fa-shopping-bag',
+            'submenu' => [
+                [
+                    'text' => 'Servicios',
+                    'route'  => 'servicios.index',
+                    'icon' => 'fas fa-fw fa-layer-group',
+                ],
+                [
+                    'text' => 'Materiales',
+                    'route'  => 'materiales.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+            ],
         ],
+        // ['header' => 'MODULO PROYECTOS'],
         [
-            'text' => 'Informes',
-            'route'  => 'informes.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Proyectos',
-            'route'  => 'proyectos.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Facturas',
-            'route'  => 'facturas.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Contratos',
-            'route'  => 'contratos.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Documentos',
-            'route'  => 'documentos.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Proveedores',
-            'route'  => 'proveedores.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Materiales',
-            'route'  => 'materiales.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Entradas',
-            'route'  => 'entradas.index',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
-            'text' => 'Salidas',
-            'route'  => 'salidas.index',
-            'icon' => 'fas fa-fw fa-book',
+            'text' => 'PROYECTOS',
+            'icon' => 'fas fa-fw fa-toolbox',
+            'submenu' => [
+                [
+                    'text' => 'Presupuestos',
+                    'route'  => 'presupuestos.index',
+                    'icon' => 'fas fa-fw fa-layer-group',
+                ],
+                [
+                    'text' => 'Proyectos',
+                    'route'  => 'proyectos.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+                [
+                    'text' => 'Contratos',
+                    'route'  => 'contratos.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+                [
+                    'text' => 'Documentos',
+                    'route'  => 'documentos.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+                [
+                    'text' => 'Informes',
+                    'route'  => 'informes.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+            ],
         ],
     ],
 

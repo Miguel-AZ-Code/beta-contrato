@@ -1,24 +1,13 @@
 @extends('adminlte::page')
 
 @section('content')
-    <br>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col col-lg-7 mt-6 p-4">
+        <h2 class="mt-2 text-dark fw-light">
+            La herramienta de cálculo para constructores y profesionales
+        </h2>
+        <p>
+            Plataforma digital para realizar tus propios cómputos, presupuestos en tiempo real y vincularte con clientes y
+            comercios.
+        </p>
     </div>
 @endsection
