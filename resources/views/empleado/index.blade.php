@@ -17,7 +17,7 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('empleados.create') }}" class="btn btn-primary btn-sm float-right"
+                                <a href="{{ route('empleados.create') }}" class="btn btn-success btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
@@ -60,10 +60,10 @@
                                             <td>
                                                 <form action="{{ route('empleados.destroy', $empleado->id) }}"
                                                     method="POST">
-                                                    <a class="btn btn-sm btn-primary "
+                                                    <a class="btn btn-sm btn-dark "
                                                         href="{{ route('empleados.show', $empleado->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success"
+                                                    <a class="btn btn-sm btn-warning"
                                                         href="{{ route('empleados.edit', $empleado->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
