@@ -16,6 +16,14 @@ use Illuminate\Http\Request;
  */
 class ContratoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.contratos.index')->only('index');
+        $this->middleware('can:admin.contratos.edit')->only('edit', 'update');
+        $this->middleware('can:admin.contratos.create')->only('create', 'store');
+        $this->middleware('can:admin.contratos.show')->only('show');
+        $this->middleware('can:admin.contratos.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

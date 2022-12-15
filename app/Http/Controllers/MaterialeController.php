@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class MaterialeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.materiales.index')->only('index');
+        $this->middleware('can:admin.materiales.edit')->only('edit', 'update');
+        $this->middleware('can:admin.materiales.create')->only('create', 'store');
+        $this->middleware('can:admin.materiales.show')->only('show');
+        $this->middleware('can:admin.materiales.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

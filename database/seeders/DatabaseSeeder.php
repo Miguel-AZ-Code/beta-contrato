@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Empleado::factory(15)->create();
         \App\Models\Proyecto::factory(15)->create();
         $this->call([
+            RoleSeeder::class,
+            UserSeeder::class,
             MetodoSeeder::class,
             MedidaSeeder::class,
         ]);

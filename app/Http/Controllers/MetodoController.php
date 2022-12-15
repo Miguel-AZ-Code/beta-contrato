@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class MetodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.metodos.index')->only('index');
+        $this->middleware('can:admin.metodos.edit')->only('edit', 'update');
+        $this->middleware('can:admin.metodos.create')->only('create', 'store');
+        $this->middleware('can:admin.metodos.show')->only('show');
+        $this->middleware('can:admin.metodos.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

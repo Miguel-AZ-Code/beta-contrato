@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class ProyectoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.proyectos.index')->only('index');
+        $this->middleware('can:admin.proyectos.edit')->only('edit', 'update');
+        $this->middleware('can:admin.proyectos.create')->only('create', 'store');
+        $this->middleware('can:admin.proyectos.show')->only('show');
+        $this->middleware('can:admin.proyectos.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

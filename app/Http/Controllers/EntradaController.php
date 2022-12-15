@@ -14,6 +14,14 @@ use Illuminate\Http\Request;
  */
 class EntradaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.entradas.index')->only('index');
+        $this->middleware('can:admin.entradas.edit')->only('edit', 'update');
+        $this->middleware('can:admin.entradas.create')->only('create', 'store');
+        $this->middleware('can:admin.entradas.show')->only('show');
+        $this->middleware('can:admin.entradas.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

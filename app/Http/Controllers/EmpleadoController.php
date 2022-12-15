@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class EmpleadoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.empleados.index')->only('index');
+        $this->middleware('can:admin.empleados.edit')->only('edit', 'update');
+        $this->middleware('can:admin.empleados.create')->only('create', 'store');
+        $this->middleware('can:admin.empleados.show')->only('show');
+        $this->middleware('can:admin.empleados.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

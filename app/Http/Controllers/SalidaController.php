@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
  */
 class SalidaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.salidas.index')->only('index');
+        $this->middleware('can:admin.salidas.edit')->only('edit', 'update');
+        $this->middleware('can:admin.salidas.create')->only('create', 'store');
+        $this->middleware('can:admin.salidas.show')->only('show');
+        $this->middleware('can:admin.salidas.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

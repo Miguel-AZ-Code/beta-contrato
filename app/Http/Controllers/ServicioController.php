@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class ServicioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.servicios.index')->only('index');
+        $this->middleware('can:admin.servicios.edit')->only('edit', 'update');
+        $this->middleware('can:admin.servicios.create')->only('create', 'store');
+        $this->middleware('can:admin.servicios.show')->only('show');
+        $this->middleware('can:admin.servicios.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

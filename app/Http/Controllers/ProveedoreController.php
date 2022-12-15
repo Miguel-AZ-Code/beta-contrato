@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class ProveedoreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.proveedores.index')->only('index');
+        $this->middleware('can:admin.proveedores.edit')->only('edit', 'update');
+        $this->middleware('can:admin.proveedores.create')->only('create', 'store');
+        $this->middleware('can:admin.proveedores.show')->only('show');
+        $this->middleware('can:admin.proveedores.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

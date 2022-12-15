@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class FacturaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.facturas.index')->only('index');
+        $this->middleware('can:admin.facturas.edit')->only('edit', 'update');
+        $this->middleware('can:admin.facturas.create')->only('create', 'store');
+        $this->middleware('can:admin.facturas.show')->only('show');
+        $this->middleware('can:admin.facturas.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

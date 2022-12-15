@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:users.index')->only('index');
+        $this->middleware('can:users.edit')->only('edit', 'update');
+        $this->middleware('can:users.create')->only('create', 'store');
+        $this->middleware('can:users.show')->only('show');
+        $this->middleware('can:users.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +26,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+        $users = User::all();
 
-        return view('user.index', compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+        return view('user.index', compact('users'));
     }
 
     /**

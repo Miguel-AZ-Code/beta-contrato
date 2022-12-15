@@ -392,8 +392,16 @@ return [
                     'text' => 'Usuarios',
                     'route'  => 'users.index',
                     'icon' => 'fas fa-fw fa-user',
+                    'can' => 'users.index'
+                ],
+                [
+                    'text' => 'Roles',
+                    'route'  => 'roles.index',
+                    'icon' => 'fas fa-fw fa-user-lock',
+                    'can' => 'roles.index',
                 ],
             ],
+            'can' => 'users.menu'
         ],
         [
             'text' => 'Personal',

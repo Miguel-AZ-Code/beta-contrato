@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class InformeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.informes.index')->only('index');
+        $this->middleware('can:admin.informes.edit')->only('edit', 'update');
+        $this->middleware('can:admin.informes.create')->only('create', 'store');
+        $this->middleware('can:admin.informes.show')->only('show');
+        $this->middleware('can:admin.informes.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

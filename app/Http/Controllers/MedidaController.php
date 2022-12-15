@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class MedidaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.medidas.index')->only('index');
+        $this->middleware('can:admin.medidas.edit')->only('edit', 'update');
+        $this->middleware('can:admin.medidas.create')->only('create', 'store');
+        $this->middleware('can:admin.medidas.show')->only('show');
+        $this->middleware('can:admin.medidas.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
