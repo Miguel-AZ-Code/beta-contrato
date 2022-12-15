@@ -388,7 +388,11 @@ return [
             'text' => 'Administracion',
             'icon' => 'fas fa-fw fa-users',
             'submenu' => [
-
+                [
+                    'text' => 'Usuarios',
+                    'route'  => 'users.index',
+                    'icon' => 'fas fa-fw fa-user',
+                ],
             ],
         ],
         [
