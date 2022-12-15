@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Cliente
@@ -21,29 +23,37 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cliente extends Model
 {
-  use HasFactory;
+    use HasFactory, LogsActivity;
 
-  static $rules = [
-    'dni' => 'required',
-    'nombre' => 'required',
-    'telefono' => 'required',
-  ];
+    static $rules = [
+        'dni' => 'required',
+        'nombre' => 'required',
+        'telefono' => 'required',
+    ];
 
-  protected $perPage = 20;
+    protected $perPage = 20;
 
-  /**
-   * Attributes that should be mass-assignable.
-   *
-   * @var array
-   */
-  protected $fillable = ['dni', 'nombre', 'telefono'];
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['dni', 'nombre', 'telefono'];
 
 
-  /**
-   * @return \Illuminate\Database\Eloquent\Relations\HasMany
-   */
-  public function contratos()
-  {
-    return $this->hasMany('App\Models\Contrato', 'cliente_id', 'id');
-  }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contratos()
+    {
+        return $this->hasMany('App\Models\Contrato', 'cliente_id', 'id');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['dni', 'nombre', 'telefono'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} Cliente")
+            ->useLogName('user');
+    }
 }

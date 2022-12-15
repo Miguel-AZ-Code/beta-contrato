@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Materiale
@@ -26,7 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Materiale extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     static $rules = [
         'nombre' => 'required',
@@ -75,5 +77,13 @@ class Materiale extends Model
     public function servicios()
     {
         return $this->belongsToMany(Servicio::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['nombre', 'descripcion', 'costo', 'stock', 'medida_id'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} material")
+            ->useLogName('user');
     }
 }

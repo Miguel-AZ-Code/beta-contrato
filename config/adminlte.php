@@ -400,6 +400,12 @@ return [
                     'icon' => 'fas fa-fw fa-user-lock',
                     'can' => 'roles.index',
                 ],
+                [
+                    'text' => 'Registro de actividades',
+                    'route'  => 'activitylog',
+                    'icon' => 'fas fa-fw fa-database',
+                    'can' => 'admin.activitylog.index',
+                ],
             ],
             'can' => 'users.menu'
         ],

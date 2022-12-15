@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Salida
@@ -22,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Salida extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     static $rules = [
         'descripcion' => 'required',
@@ -53,5 +55,13 @@ class Salida extends Model
     public function materiales()
     {
         return $this->belongsToMany(Materiale::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['empleado_id', 'descripcion', 'fecha'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} Nota de salida")
+            ->useLogName('user');
     }
 }

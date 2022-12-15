@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Proyecto
@@ -25,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Proyecto extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     static $rules = [
         'nombre' => 'required',
@@ -59,5 +61,13 @@ class Proyecto extends Model
     public function empleado()
     {
         return $this->hasOne('App\Models\Empleado', 'id', 'empleado_id');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['nombre', 'ubicacion', 'fecha_inicio', 'fecha_fin', 'estado', 'empleado_id'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} proyecto")
+            ->useLogName('user');
     }
 }

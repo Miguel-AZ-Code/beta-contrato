@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Informe
@@ -20,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Informe extends Model
 {
-  use HasFactory;
+  use HasFactory, LogsActivity;
 
   static $rules = [
     'titulo' => 'required',
@@ -36,4 +38,12 @@ class Informe extends Model
    * @var array
    */
   protected $fillable = ['titulo', 'descripcion', 'fecha'];
+
+  public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['titulo', 'descripcion', 'fecha'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} informe")
+            ->useLogName('user');
+    }
 }

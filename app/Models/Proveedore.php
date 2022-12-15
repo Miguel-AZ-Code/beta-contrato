@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Proveedore
@@ -20,11 +22,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Proveedore extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     static $rules = [
-		'nit' => 'required',
-		'empresa' => 'required',
+        'nit' => 'required',
+        'empresa' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,7 +36,7 @@ class Proveedore extends Model
      *
      * @var array
      */
-    protected $fillable = ['nit','empresa'];
+    protected $fillable = ['nit', 'empresa'];
 
 
     /**
@@ -45,5 +47,11 @@ class Proveedore extends Model
         return $this->hasMany('App\Models\Entrada', 'proveedore_id', 'id');
     }
 
-
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['nit', 'empresa'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} proveedor")
+            ->useLogName('user');
+    }
 }

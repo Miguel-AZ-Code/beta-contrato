@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Presupuesto
@@ -21,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Presupuesto extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     static $rules = [
         'descripcion' => 'required',
@@ -52,5 +54,13 @@ class Presupuesto extends Model
     public function servicios()
     {
         return $this->belongsToMany(Servicio::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['descripcion', 'totla'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} presupuesto")
+            ->useLogName('user');
     }
 }

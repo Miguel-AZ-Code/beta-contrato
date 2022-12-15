@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Factura
@@ -23,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Factura extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     static $rules = [
         'nit' => 'required',
@@ -55,5 +57,13 @@ class Factura extends Model
     public function metodo()
     {
         return $this->hasOne('App\Models\Metodo', 'id', 'metodo_id');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['nit', 'total', 'fecha', 'metodo_id'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} factura")
+            ->useLogName('user');
     }
 }

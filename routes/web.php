@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\DocumentoController;
@@ -36,6 +37,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('users', UserController::class);
+Route::get('log', [ActivityLogController::class, 'index'])->name('activitylog');
 Route::resource('clientes', ClienteController::class);
 Route::resource('empleados', EmpleadoController::class);
 Route::resource('presupuestos', PresupuestoController::class);

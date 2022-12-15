@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Entrada
@@ -24,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Entrada extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     static $rules = [
         'descripcion' => 'required',
@@ -63,5 +65,13 @@ class Entrada extends Model
     public function proveedore()
     {
         return $this->hasOne('App\Models\Proveedore', 'id', 'proveedore_id');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['empleado_id', 'proveedore_id', 'descripcion', 'fecha'])
+            ->setDescriptionForEvent(fn (string $eventName) => "{$eventName} Nota de entrada")
+            ->useLogName('user');
     }
 }
