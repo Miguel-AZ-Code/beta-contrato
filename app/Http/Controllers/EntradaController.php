@@ -87,8 +87,11 @@ class EntradaController extends Controller
     public function edit($id)
     {
         $entrada = Entrada::find($id);
+        $empleados = Empleado::pluck('nombre', 'id');
+        $proveedores = Proveedore::pluck('empresa', 'id');
+        $materiales = Materiale::pluck('nombre', 'id');
 
-        return view('entrada.edit', compact('entrada'));
+        return view('entrada.edit', compact('entrada', 'empleados', 'proveedores', 'materiales'));
     }
 
     /**

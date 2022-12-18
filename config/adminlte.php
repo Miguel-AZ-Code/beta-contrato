@@ -454,7 +454,7 @@ return [
         ],
         // ['header' => 'MODULO PRODUCTOS Y SERVICIOS'],
         [
-            'text' => 'PRODUCTOS Y SERVICIOS',
+            'text' => 'Productos y Servicios',
             'icon' => 'fas fa-fw fa-shopping-bag',
             'submenu' => [
                 [
@@ -471,7 +471,7 @@ return [
         ],
         // ['header' => 'MODULO PROYECTOS'],
         [
-            'text' => 'PROYECTOS',
+            'text' => 'Proyectos',
             'icon' => 'fas fa-fw fa-toolbox',
             'submenu' => [
                 [

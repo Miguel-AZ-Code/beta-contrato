@@ -82,8 +82,9 @@ class MaterialeController extends Controller
     public function edit($id)
     {
         $materiale = Materiale::find($id);
+        $medidas = Medida::pluck('unidad', 'id');
 
-        return view('materiale.edit', compact('materiale'));
+        return view('materiale.edit', compact('materiale', 'medidas'));
     }
 
     /**

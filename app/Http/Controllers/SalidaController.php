@@ -85,8 +85,9 @@ class SalidaController extends Controller
     public function edit($id)
     {
         $salida = Salida::find($id);
-
-        return view('salida.edit', compact('salida'));
+        $empleados = Empleado::pluck('nombre', 'id');
+        $materiales = Materiale::pluck('nombre', 'id');
+        return view('salida.edit', compact('salida', 'empleados', 'materiales'));
     }
 
     /**

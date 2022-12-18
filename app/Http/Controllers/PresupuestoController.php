@@ -83,8 +83,9 @@ class PresupuestoController extends Controller
     public function edit($id)
     {
         $presupuesto = Presupuesto::find($id);
+        $servicios = Servicio::pluck('nombre', 'id');
 
-        return view('presupuesto.edit', compact('presupuesto'));
+        return view('presupuesto.edit', compact('presupuesto', 'servicios'));
     }
 
     /**

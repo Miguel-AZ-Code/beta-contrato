@@ -90,8 +90,12 @@ class ContratoController extends Controller
     public function edit($id)
     {
         $contrato = Contrato::find($id);
-
-        return view('contrato.edit', compact('contrato'));
+        $empleados = Empleado::pluck('nombre', 'id');
+        $clientes = Cliente::pluck('nombre', 'id');
+        $proyectos = Proyecto::pluck('nombre', 'id');
+        $presupuestos = Presupuesto::pluck('descripcion', 'id');
+        $facturas = Factura::pluck('nit', 'id');
+        return view('contrato.edit', compact('contrato', 'empleados', 'clientes', 'proyectos', 'presupuestos', 'facturas'));
     }
 
     /**

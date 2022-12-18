@@ -83,8 +83,9 @@ class ServicioController extends Controller
     public function edit($id)
     {
         $servicio = Servicio::find($id);
+        $materiales = Materiale::pluck('nombre', 'id');
 
-        return view('servicio.edit', compact('servicio'));
+        return view('servicio.edit', compact('servicio', 'materiales'));
     }
 
     /**

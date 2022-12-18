@@ -82,8 +82,9 @@ class FacturaController extends Controller
     public function edit($id)
     {
         $factura = Factura::find($id);
+        $metodos = Metodo::pluck('nombre', 'id');
 
-        return view('factura.edit', compact('factura'));
+        return view('factura.edit', compact('factura', 'metodos'));
     }
 
     /**

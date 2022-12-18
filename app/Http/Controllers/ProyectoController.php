@@ -82,8 +82,9 @@ class ProyectoController extends Controller
     public function edit($id)
     {
         $proyecto = Proyecto::find($id);
+        $empleados = Empleado::pluck('nombre', 'id');
 
-        return view('proyecto.edit', compact('proyecto'));
+        return view('proyecto.edit', compact('proyecto', 'empleados'));
     }
 
     /**
