@@ -6,10 +6,10 @@
             <div class="card-header">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span>
-                        Administrar Empleados
+                        Administrar Clientes
                     </span>
                     <div class="float-right">
-                        <a href="{{ route('empleados.index') }}" class="btn btn-primary btn-sm">Volver</a>
+                        <a href="{{ route('clientes.index') }}" class="btn btn-primary btn-sm">Volver</a>
                     </div>
                 </div>
             </div>

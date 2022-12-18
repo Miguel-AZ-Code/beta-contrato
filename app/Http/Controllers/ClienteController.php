@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ClientesDataTable;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -113,5 +114,13 @@ class ClienteController extends Controller
 
         return redirect()->route('clientes.index')
             ->with('success', 'Cliente deleted successfully');
+    }
+
+    /**
+     * Función para exportar archivos
+     */
+    public function export(ClientesDataTable $dataTable)
+    {
+        return $dataTable->render('cliente.export');
     }
 }

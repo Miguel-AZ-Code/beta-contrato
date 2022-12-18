@@ -17,7 +17,11 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('clientes.create') }}" class="btn btn-success btn-sm float-right"
+                                <a href="{{ route('clientes.export') }}" class="btn btn-primary btn-sm"
+                                    data-placement="left">
+                                    <i class="fa fa-fw fa-file-export"></i> {{ __('Exportar') }}
+                                </a>
+                                <a href="{{ route('clientes.create') }}" class="btn btn-success btn-sm"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
@@ -54,7 +58,8 @@
                                             <td>{{ $cliente->telefono }}</td>
 
                                             <td>
-                                                <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
+                                                <form action="{{ route('clientes.destroy', $cliente->id) }}"
+                                                    method="POST">
                                                     <a class="btn btn-sm btn-dark "
                                                         href="{{ route('clientes.show', $cliente->id) }}"><i
                                                             class="fa fa-fw fa-eye"></i> Show</a>
