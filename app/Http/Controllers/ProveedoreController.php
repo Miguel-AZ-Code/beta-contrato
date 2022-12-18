@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProveedoresDataTable;
 use App\Models\Proveedore;
 use Illuminate\Http\Request;
 
@@ -113,5 +114,13 @@ class ProveedoreController extends Controller
 
         return redirect()->route('proveedores.index')
             ->with('success', 'Proveedore deleted successfully');
+    }
+
+    /**
+     * Función para exportar archivos
+     */
+    public function export(ProveedoresDataTable $dataTable)
+    {
+        return $dataTable->render('proveedore.export');
     }
 }

@@ -13,14 +13,19 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Proveedore') }}
+                                {{ __('Proveedores') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('proveedores.create') }}" class="btn btn-success btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('proveedores.export') }}" class="btn btn-primary btn-sm"
+                                    data-placement="left">
+                                    <i class="fa fa-fw fa-file-export"></i> {{ __('Exportar') }}
                                 </a>
-                              </div>
+                                <a href="{{ route('proveedores.create') }}" class="btn btn-success btn-sm"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -36,8 +41,8 @@
                                     <tr>
                                         <th>No</th>
 
-										<th>Nit</th>
-										<th>Empresa</th>
+                                        <th>Nit</th>
+                                        <th>Empresa</th>
 
                                         <th></th>
                                     </tr>
@@ -47,16 +52,22 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-											<td>{{ $proveedore->nit }}</td>
-											<td>{{ $proveedore->empresa }}</td>
+                                            <td>{{ $proveedore->nit }}</td>
+                                            <td>{{ $proveedore->empresa }}</td>
 
                                             <td>
-                                                <form action="{{ route('proveedores.destroy',$proveedore->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-dark " href="{{ route('proveedores.show',$proveedore->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-warning" href="{{ route('proveedores.edit',$proveedore->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('proveedores.destroy', $proveedore->id) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-dark "
+                                                        href="{{ route('proveedores.show', $proveedore->id) }}"><i
+                                                            class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-warning"
+                                                        href="{{ route('proveedores.edit', $proveedore->id) }}"><i
+                                                            class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
