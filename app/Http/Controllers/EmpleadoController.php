@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\EmpleadosDataTable;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 
@@ -113,5 +114,13 @@ class EmpleadoController extends Controller
 
         return redirect()->route('empleados.index')
             ->with('success', 'Empleado deleted successfully');
+    }
+
+    /**
+     * Funcion para exportar PDF
+     */
+    public function export(EmpleadosDataTable $dataTable)
+    {
+        return $dataTable->render('empleado.export');
     }
 }

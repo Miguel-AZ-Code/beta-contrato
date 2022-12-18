@@ -52,3 +52,6 @@ Route::resource('materiales', MaterialeController::class);
 Route::resource('entradas', EntradaController::class);
 Route::resource('salidas', SalidaController::class);
 Route::resource('roles', RoleController::class);
+
+//Exportacion de archivos
+Route::get('export/empleados', [EmpleadoController::class, 'export'])->name('empleados.export');
