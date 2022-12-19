@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\RegistrosDataTable;
 use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,5 +63,13 @@ class ActivityLogController extends Controller
             ->get();
 
         return view('bitacora.show', compact('activityLog'));
+    }
+
+    /**
+     * Función para exportar archivos
+     */
+    public function export(RegistrosDataTable $dataTable)
+    {
+        return $dataTable->render('bitacora.export');
     }
 }

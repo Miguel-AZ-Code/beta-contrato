@@ -83,7 +83,7 @@
                     <use xlink:href="#tools"></use>
                 </svg>
                 <div>
-                    <h3 class="fw-bold mb-0 fs-4">Registro de Actividades</h3>
+                    <h3 class="fw-bold mb-0 fs-4"><a href="{{ route('registros.export') }}" class="text-reset">Registro de Actividades</a></h3>
                     <p>Paragraph of text beneath the heading to explain the heading.</p>
                 </div>
             </div>

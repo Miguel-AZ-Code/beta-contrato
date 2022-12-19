@@ -17,7 +17,12 @@
                             <span id="card_title">
                                 {{ __('Bitacora') }}
                             </span>
-
+                            <div class="float-right">
+                                <a href="{{ route('registros.export') }}" class="btn btn-primary btn-sm"
+                                    data-placement="left">
+                                    <i class="fa fa-fw fa-file-export"></i> {{ __('Exportar') }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
