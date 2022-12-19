@@ -12,6 +12,7 @@ use App\Http\Controllers\MaterialeController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ProveedoreController;
 use App\Http\Controllers\ProyectoController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalidaController;
 use App\Http\Controllers\ServicioController;
@@ -54,6 +55,7 @@ Route::resource('salidas', SalidaController::class);
 Route::resource('roles', RoleController::class);
 
 //Exportacion de archivos
+Route::get('export', [ReporteController::class, 'index'])->name('reportes.index');
 Route::get('export/empleados', [EmpleadoController::class, 'export'])->name('empleados.export');
 Route::get('export/clientes', [ClienteController::class, 'export'])->name('clientes.export');
 Route::get('export/proveedores', [ProveedoreController::class, 'export'])->name('proveedores.export');
