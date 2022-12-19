@@ -80,7 +80,15 @@ class RoleSeeder extends Seeder
             'descripcion' => 'Eliminar rol'
         ])->syncRoles([$role1]);
         //---------------------------------------------------
-
+        // REGISTROS DE ACTIVIDADES (BITACORA)
+        Permission::create([
+            'name' => 'registros.index',
+            'descripcion' => 'Ver reportes',
+        ])->syncRoles([$role1]);
+        Permission::create([
+            'name' => 'registros.create',
+            'descripcion' => 'Crear reportes',
+        ])->syncRoles([$role1]);
 
         // MODULO PERSONAS
         Permission::create([

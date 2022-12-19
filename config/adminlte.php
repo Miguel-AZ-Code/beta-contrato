@@ -333,7 +333,7 @@ return [
                     'text' => 'Reportes',
                     'route'  => 'reportes.index',
                     'icon' => 'fas fa-fw fa-file-export',
-                    // 'can' => 'roles.index',
+                    'can' => 'registros.index',
                 ],
             ],
             'can' => 'users.menu'
