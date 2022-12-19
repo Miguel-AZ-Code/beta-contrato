@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ServiciosDataTable;
 use App\Models\Materiale;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
@@ -116,5 +117,13 @@ class ServicioController extends Controller
 
         return redirect()->route('servicios.index')
             ->with('success', 'Servicio deleted successfully');
+    }
+
+    /**
+     * Función para exportar archivos
+     */
+    public function export(ServiciosDataTable $dataTable)
+    {
+        return $dataTable->render('servicio.export');
     }
 }

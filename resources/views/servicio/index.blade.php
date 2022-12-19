@@ -17,7 +17,11 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('servicios.create') }}" class="btn btn-success btn-sm float-right"
+                                <a href="{{ route('servicios.export') }}" class="btn btn-primary btn-sm"
+                                    data-placement="left">
+                                    <i class="fa fa-fw fa-file-export"></i> {{ __('Exportar') }}
+                                </a>
+                                <a href="{{ route('servicios.create') }}" class="btn btn-success btn-sm"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
