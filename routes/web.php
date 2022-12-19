@@ -57,3 +57,4 @@ Route::resource('roles', RoleController::class);
 Route::get('export/empleados', [EmpleadoController::class, 'export'])->name('empleados.export');
 Route::get('export/clientes', [ClienteController::class, 'export'])->name('clientes.export');
 Route::get('export/proveedores', [ProveedoreController::class, 'export'])->name('proveedores.export');
+Route::get('export/materiales', [MaterialeController::class, 'export'])->name('materiales.export');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\MaterialesDataTable;
 use App\Models\Materiale;
 use App\Models\Medida;
 use Illuminate\Http\Request;
@@ -115,5 +116,13 @@ class MaterialeController extends Controller
 
         return redirect()->route('materiales.index')
             ->with('success', 'Materiale deleted successfully');
+    }
+
+    /**
+     * Función para exportar archivos
+     */
+    public function export(MaterialesDataTable $dataTable)
+    {
+        return $dataTable->render('materiale.export');
     }
 }
