@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MetodoSeeder::class,
             MedidaSeeder::class,
+            TipoSeeder::class,
         ]);
         \App\Models\Factura::factory(15)->create();
         \App\Models\Contrato::factory(15)->create();
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\ServicioMaterial::factory(15)->create();
         \App\Models\Entrada::factory(15)->create();
         \App\Models\Salida::factory(15)->create();
+        \App\Models\Nota::factory(15)->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

@@ -193,23 +193,23 @@ class RoleSeeder extends Seeder
         //ENTRADAS
         Permission::create([
             'name' => 'admin.entradas.index',
-            'descripcion' => 'Listar tipos de notas'
+            'descripcion' => 'Listar entradas'
         ])->syncRoles([$role1, $role2]);
         Permission::create([
             'name' => 'admin.entradas.create',
-            'descripcion' => 'crear tipos de notas'
+            'descripcion' => 'crear entradas'
         ])->syncRoles([$role1, $role2]);
         Permission::create([
             'name' => 'admin.entradas.show',
-            'descripcion' => 'mostrar tipos de notas'
+            'descripcion' => 'mostrar entradas'
         ])->syncRoles([$role1, $role2]);
         Permission::create([
             'name' => 'admin.entradas.edit',
-            'descripcion' => 'editar tipos de notas'
+            'descripcion' => 'editar entradas'
         ])->syncRoles([$role1, $role2]);
         Permission::create([
             'name' => 'admin.entradas.destroy',
-            'descripcion' => 'eliminar tipos de notas'
+            'descripcion' => 'eliminar entradas'
         ])->syncRoles([$role1, $role2]);
 
         // SALIDAS
@@ -223,7 +223,7 @@ class RoleSeeder extends Seeder
         ])->syncRoles([$role1, $role2]);
         Permission::create([
             'name' => 'admin.salidas.show',
-            'descripcion' => 'Ver nota'
+            'descripcion' => 'Ver salidas'
         ])->syncRoles([$role1, $role2]);
         Permission::create([
             'name' => 'admin.salidas.edit',
@@ -232,6 +232,28 @@ class RoleSeeder extends Seeder
         Permission::create([
             'name' => 'admin.salidas.destroy',
             'descripcion' => 'Eliminar salidas'
+        ])->syncRoles([$role1, $role2]);
+
+        // NOTAS
+        Permission::create([
+            'name' => 'admin.notas.index',
+            'descripcion' => 'Listar notas'
+        ])->syncRoles([$role1, $role2]);
+        Permission::create([
+            'name' => 'admin.notas.create',
+            'descripcion' => 'Crear notas'
+        ])->syncRoles([$role1, $role2]);
+        Permission::create([
+            'name' => 'admin.notas.show',
+            'descripcion' => 'Ver nota'
+        ])->syncRoles([$role1, $role2]);
+        Permission::create([
+            'name' => 'admin.notas.edit',
+            'descripcion' => 'Editar notas'
+        ])->syncRoles([$role1, $role2]);
+        Permission::create([
+            'name' => 'admin.notas.destroy',
+            'descripcion' => 'Eliminar notas'
         ])->syncRoles([$role1, $role2]);
 
         //---------------------------------------------------

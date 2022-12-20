@@ -79,6 +79,14 @@ class Materiale extends Model
         return $this->belongsToMany(Servicio::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notas()
+    {
+        return $this->belongsToMany(Nota::class);
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

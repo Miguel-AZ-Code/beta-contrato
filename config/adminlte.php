@@ -379,6 +379,11 @@ return [
                     'route'  => 'salidas.index',
                     'icon' => 'fas fa-fw fa-book',
                 ],
+                [
+                    'text' => 'Notas',
+                    'route'  => 'notas.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
             ],
         ],
         // ['header' => 'MODULO PRODUCTOS Y SERVICIOS'],
