@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contrato;
 use App\Models\Documento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class DocumentoController
@@ -52,9 +53,17 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Documento::$rules);
+        // request()->validate(Documento::$rules);
 
-        $documento = Documento::create($request->all());
+        // $documento = Documento::create($request->all());
+
+        $documento = request()->except('_token');
+
+        if ($request->hasFile('url')) {
+            $documento['url'] = $request->file('url')->store('uploads', 'public');
+        }
+
+        Documento::insert($documento);
 
         return redirect()->route('documentos.index')
             ->with('success', 'Documento created successfully.');
@@ -82,8 +91,8 @@ class DocumentoController extends Controller
     public function edit($id)
     {
         $documento = Documento::find($id);
-
-        return view('documento.edit', compact('documento'));
+        $contratos = Contrato::pluck('descripcion', 'id');
+        return view('documento.edit', compact('documento', 'contratos'));
     }
 
     /**
@@ -93,11 +102,23 @@ class DocumentoController extends Controller
      * @param  Documento $documento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Documento $documento)
+    public function update(Request $request, $id)
     {
-        request()->validate(Documento::$rules);
+        // request()->validate(Documento::$rules);
 
-        $documento->update($request->all());
+        // $documento->update($request->all());
+
+        $datosDocumento = request()->except(['_token', '_method']);
+
+        if ($request->hasFile('url')) {
+            $documento = Documento::findOrFail($id);
+
+            Storage::delete('public/'.$documento->url);
+
+            $datosDocumento['url'] = $request->file('url')->store('uploads', 'public');
+        }
+
+        Documento::where('id', '=', $id)->update($datosDocumento);
 
         return redirect()->route('documentos.index')
             ->with('success', 'Documento updated successfully');

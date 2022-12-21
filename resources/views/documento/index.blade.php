@@ -39,6 +39,7 @@
 
                                         <th>Nombre</th>
                                         <th>Url</th>
+                                        <th>Nro Contrato</th>
                                         <th>Contrato</th>
 
                                         <th></th>
@@ -50,7 +51,13 @@
                                             <td>{{ $documento->id }}</td>
 
                                             <td>{{ $documento->nombre }}</td>
-                                            <td>{{ $documento->url }}</td>
+                                            <td>
+                                                {{-- <iframe src="{{ asset('storage') . '/' . $documento->url }}" frameborder="0"
+                                                    width="200" height="200"></iframe> --}}
+                                                <a href="{{ asset('storage') . '/' . $documento->url }}"
+                                                    target="_blank">{{ $documento->nombre }}</a>
+                                            </td>
+                                            <td>{{ $documento->contrato->id }}</td>
                                             <td>{{ $documento->contrato->descripcion }}</td>
 
                                             <td>

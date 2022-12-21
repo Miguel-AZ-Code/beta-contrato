@@ -7,8 +7,9 @@
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('url') }}
-            {{ Form::text('url', $documento->url, ['class' => 'form-control' . ($errors->has('url') ? ' is-invalid' : ''), 'placeholder' => 'Url']) }}
+            {{ Form::label('archivo') }}
+            {{-- {{ Form::text('url', $documento->url, ['class' => 'form-control' . ($errors->has('url') ? ' is-invalid' : ''), 'placeholder' => 'Url']) }} --}}
+            {!! Form::file('url', ['class' => 'form-control-file', 'accept' => '.pdf']) !!}
             {!! $errors->first('url', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
