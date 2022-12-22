@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class TipoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.tipos.index')->only('index');
+        $this->middleware('can:admin.tipos.edit')->only('edit', 'update');
+        $this->middleware('can:admin.tipos.create')->only('create', 'store');
+        $this->middleware('can:admin.tipos.show')->only('show');
+        $this->middleware('can:admin.tipos.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *

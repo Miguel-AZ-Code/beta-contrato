@@ -370,18 +370,18 @@ return [
                     'icon' => 'fas fa-fw fa-book',
                 ],
                 [
-                    'text' => 'Entradas',
-                    'route'  => 'entradas.index',
-                    'icon' => 'fas fa-fw fa-book',
-                ],
-                [
-                    'text' => 'Salidas',
-                    'route'  => 'salidas.index',
+                    'text' => 'Tipos de Notas',
+                    'route'  => 'tipos.index',
                     'icon' => 'fas fa-fw fa-book',
                 ],
                 [
                     'text' => 'Notas',
                     'route'  => 'notas.index',
+                    'icon' => 'fas fa-fw fa-book',
+                ],
+                [
+                    'text' => 'Metodos de pagos',
+                    'route'  => 'metodos.index',
                     'icon' => 'fas fa-fw fa-book',
                 ],
             ],

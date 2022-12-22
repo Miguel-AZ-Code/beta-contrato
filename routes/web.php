@@ -9,6 +9,7 @@ use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\InformeController;
 use App\Http\Controllers\MaterialeController;
+use App\Http\Controllers\MetodoController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ProveedoreController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalidaController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\TipoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +57,8 @@ Route::resource('entradas', EntradaController::class);
 Route::resource('salidas', SalidaController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('notas', NotaController::class);
+Route::resource('metodos', MetodoController::class);
+Route::resource('tipos', TipoController::class);
 
 //Exportacion de archivos
 Route::get('export', [ReporteController::class, 'index'])->name('reportes.index');

@@ -35,8 +35,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Proveedore::factory(15)->create();
         \App\Models\Materiale::factory(15)->create();
         \App\Models\ServicioMaterial::factory(15)->create();
-        \App\Models\Entrada::factory(15)->create();
-        \App\Models\Salida::factory(15)->create();
         \App\Models\Nota::factory(15)->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
