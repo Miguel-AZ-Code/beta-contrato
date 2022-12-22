@@ -86,7 +86,7 @@ class RegistrosDataTable extends DataTable
             // Column::make('causer_id'),
             Column::make('properties'),
             Column::make('created_at'),
-            Column::make('updated_at'),
+            // Column::make('updated_at'),
         ];
     }
 
